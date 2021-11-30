@@ -19,12 +19,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   inset: 0;
   margin: 0;
   flex-direction: column;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .subtitle {
+  font-family: "Courier New", Courier, monospace;
   margin-top: 0.5rem;
 }
 

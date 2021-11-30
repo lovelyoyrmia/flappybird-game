@@ -9,6 +9,7 @@ import {
 document.addEventListener("keypress", handleStart, { once: true });
 const title = document.querySelector("[data-title]");
 const subtitle = document.querySelector("[data-subtitle]");
+const subheader = document.querySelector("[data-subheader]");
 // const score = document.querySelector("[data-score]");
 const flySound = new Audio();
 const scoreSound = new Audio();
@@ -28,7 +29,10 @@ function updateLoop(time) {
   const delta = time - lastTime;
   updateBird(delta);
   updatePipes(delta);
-  if (checkLose()) return handleLose();
+
+  if (checkLose()) {
+    return handleLose();
+  }
   // pipesCount += 1;
   lastTime = time;
   window.requestAnimationFrame(updateLoop);
@@ -53,6 +57,7 @@ function isCollision(rect1, rect2) {
 
 function handleStart() {
   title.classList.add("hide");
+  subheader.classList.remove("hide");
   // score.classList.remove("hide");
   // score.textContent = `${pipesCount}`;
   flySound.play();
@@ -66,8 +71,8 @@ function handleLose() {
   setTimeout(() => {
     title.classList.remove("hide");
     subtitle.classList.remove("hide");
-    // score.classList.add("hide");
-    subtitle.textContent = `${getPassedPipesCount()} pipes`;
+    subheader.classList.add("hide");
+    subtitle.textContent = `You've got ${getPassedPipesCount()} pipes`;
     document.addEventListener("keypress", handleStart, { once: true });
   }, 100);
 }
