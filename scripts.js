@@ -4,13 +4,18 @@ import {
   setupPipes,
   getPassedPipesCount,
   getPipeRects,
-  pipeCount,
 } from "./pipe.js";
 
 document.addEventListener("keypress", handleStart, { once: true });
 const title = document.querySelector("[data-title]");
 const subtitle = document.querySelector("[data-subtitle]");
 const score = document.querySelector("[data-score]");
+const flySound = new Audio();
+const scoreSound = new Audio();
+
+flySound.src = "sounds/fly.mp3";
+scoreSound.src = "sounds/score.mp3";
+
 let pipesCount = 0;
 let lastTime;
 
@@ -50,6 +55,7 @@ function handleStart() {
   title.classList.add("hide");
   score.classList.remove("hide");
   score.textContent = `${pipesCount}`;
+  flySound.play();
   setupBird();
   setupPipes();
   lastTime = null;
