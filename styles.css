@@ -31,12 +31,10 @@ body {
   --bird-top: -100;
   --bird-size: 60px;
   position: absolute;
-  background-color: hsl(10, 75%, 50%);
   width: var(--bird-size);
   height: var(--bird-size);
   top: calc(var(--bird-top) * 1px);
   left: var(--bird-size);
-  border-radius: 50%;
 }
 
 .pipe {
