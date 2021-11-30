@@ -31,6 +31,10 @@ export function updatePipes(delta) {
   });
 }
 
+export function pipeCount() {
+  return pipesCount;
+}
+
 export function getPassedPipesCount() {
   return passedPipeCount;
 }

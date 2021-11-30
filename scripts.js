@@ -4,14 +4,16 @@ import {
   setupPipes,
   getPassedPipesCount,
   getPipeRects,
+  pipeCount,
 } from "./pipe.js";
 
 document.addEventListener("keypress", handleStart, { once: true });
 const title = document.querySelector("[data-title]");
 const subtitle = document.querySelector("[data-subtitle]");
 const score = document.querySelector("[data-score]");
-
+let pipesCount = 0;
 let lastTime;
+
 function updateLoop(time) {
   if (lastTime == null) {
     lastTime = time;
@@ -22,6 +24,7 @@ function updateLoop(time) {
   updateBird(delta);
   updatePipes(delta);
   if (checkLose()) return handleLose();
+  pipesCount += 1;
   lastTime = time;
   window.requestAnimationFrame(updateLoop);
 }
@@ -46,6 +49,7 @@ function isCollision(rect1, rect2) {
 function handleStart() {
   title.classList.add("hide");
   score.classList.remove("hide");
+  score.textContent = `${pipesCount}`;
   setupBird();
   setupPipes();
   lastTime = null;
