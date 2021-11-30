@@ -9,6 +9,7 @@ import {
 document.addEventListener("keypress", handleStart, { once: true });
 const title = document.querySelector("[data-title]");
 const subtitle = document.querySelector("[data-subtitle]");
+const score = document.querySelector("[data-score]");
 
 let lastTime;
 function updateLoop(time) {
@@ -44,6 +45,7 @@ function isCollision(rect1, rect2) {
 
 function handleStart() {
   title.classList.add("hide");
+  score.classList.remove("hide");
   setupBird();
   setupPipes();
   lastTime = null;
@@ -54,6 +56,7 @@ function handleLose() {
   setTimeout(() => {
     title.classList.remove("hide");
     subtitle.classList.remove("hide");
+    score.classList.add("hide");
     subtitle.textContent = `${getPassedPipesCount()} pipes`;
     document.addEventListener("keypress", handleStart, { once: true });
   }, 100);
