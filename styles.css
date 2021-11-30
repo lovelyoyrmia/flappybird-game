@@ -6,6 +6,11 @@
 body {
   margin: 0;
   overflow: hidden;
+  background-image: url("bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 .title {
@@ -60,10 +65,14 @@ body {
 
 .pipe > .top {
   top: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   bottom: calc(var(--hole-top) * 1px);
 }
 
 .pipe > .bottom {
   bottom: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   top: calc(100vh - (var(--hole-top) * 1px) + calc(var(--hole-height) * 1px));
 }
