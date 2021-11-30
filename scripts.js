@@ -9,14 +9,14 @@ import {
 document.addEventListener("keypress", handleStart, { once: true });
 const title = document.querySelector("[data-title]");
 const subtitle = document.querySelector("[data-subtitle]");
-const score = document.querySelector("[data-score]");
+// const score = document.querySelector("[data-score]");
 const flySound = new Audio();
 const scoreSound = new Audio();
 
 flySound.src = "sounds/fly.mp3";
 scoreSound.src = "sounds/score.mp3";
 
-let pipesCount = 0;
+// let pipesCount = 0;
 let lastTime;
 
 function updateLoop(time) {
@@ -29,7 +29,7 @@ function updateLoop(time) {
   updateBird(delta);
   updatePipes(delta);
   if (checkLose()) return handleLose();
-  pipesCount += 1;
+  // pipesCount += 1;
   lastTime = time;
   window.requestAnimationFrame(updateLoop);
 }
@@ -53,8 +53,8 @@ function isCollision(rect1, rect2) {
 
 function handleStart() {
   title.classList.add("hide");
-  score.classList.remove("hide");
-  score.textContent = `${pipesCount}`;
+  // score.classList.remove("hide");
+  // score.textContent = `${pipesCount}`;
   flySound.play();
   setupBird();
   setupPipes();
@@ -66,7 +66,7 @@ function handleLose() {
   setTimeout(() => {
     title.classList.remove("hide");
     subtitle.classList.remove("hide");
-    score.classList.add("hide");
+    // score.classList.add("hide");
     subtitle.textContent = `${getPassedPipesCount()} pipes`;
     document.addEventListener("keypress", handleStart, { once: true });
   }, 100);
